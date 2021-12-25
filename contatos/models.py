@@ -18,6 +18,7 @@ class Contato(models.Model):
     data_criacao = models.DateTimeField('Data de Criação', default=timezone.now)
     descricao = models.TextField('Descrição', blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=DO_NOTHING, verbose_name='Categoria')
+    mostrar = models.BooleanField('Mostrar', default=True)
     
     
     def __str__(self) -> str:

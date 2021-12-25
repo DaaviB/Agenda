@@ -4,9 +4,9 @@ from .models import Contato, Categoria
 
 @admin.register(Contato)
 class ContatoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome', 'sobrenome', 'telefone', 'email', 'data_criacao')
+    list_display = ('id', 'nome', 'sobrenome', 'telefone', 'email', 'data_criacao', 'mostrar')
     list_display_links = ('id', 'nome',)
-    list_editable = ('telefone', 'email')
+    list_editable = ('telefone', 'email', 'mostrar')
     list_per_page = (10)
     ordering = ('id', 'nome')
 @admin.register(Categoria)
