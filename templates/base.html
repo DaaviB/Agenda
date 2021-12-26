@@ -4,15 +4,16 @@
 <html lang="pt">
 
 <head>
-    <title>Agenda</title>
 
+    <title>Agenda</title>
     {% include "parciais/_head.html" %}
-     
+
 </head>
 
 <body>
 
-    {% include "parciais/_nav.html"%}
+  <!-- Navigation -->
+  {% include "parciais/_nav.html"%}
 
   <!-- Page Content -->
   <div class="container">
@@ -27,13 +28,11 @@
                     id="search-input"
                     placeholder="Digite sua pesquisa"
                     name="termo">
+              {% include "parciais/_messages.html" %}
             </div>
           </div>
-          </form>
-
-        {% block conteudo %}
-          
-        {% endblock conteudo %}
+        </form>
+        {% block conteudo %}{% endblock conteudo %}
       </div>
     </div>
   </div>
