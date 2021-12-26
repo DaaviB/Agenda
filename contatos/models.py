@@ -19,6 +19,7 @@ class Contato(models.Model):
     descricao = models.TextField('Descrição', blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=DO_NOTHING, verbose_name='Categoria')
     mostrar = models.BooleanField('Mostrar', default=True)
+    foto = models.ImageField(blank=True, upload_to='fotos/%Y/%m')
     
     
     def __str__(self) -> str:
