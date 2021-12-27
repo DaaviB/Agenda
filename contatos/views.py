@@ -35,9 +35,7 @@ def busca(request):
     termo = request.GET.get('termo')
     
     if termo is None or not termo:
-        messages.add_message(
-            request, messages.ERROR, 'Preencha o campo de pesquisa.'
-        )
+        messages.error(request, "Preencha o campo de pesquisa!")
         return redirect('index')
 
     
