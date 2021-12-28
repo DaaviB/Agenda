@@ -53,8 +53,18 @@ def register(request):
         messages.error(request, "Nome de usuário já existe.")
         return render(request, 'accounts/register.html',)
     
+    user = User.objects.create_user(
+        username=usuario, 
+        email=email, 
+        password=senha,
+        first_name=nome,
+        last_name=sobrenome,
+    )
+    user.save()
     
-    return render(request, 'accounts/register.html',)
+    messages.success(request, "Cadastro realizado com sucesso.")
+    
+    return redirect('login')
 
 
 
