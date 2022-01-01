@@ -21,7 +21,7 @@
       <div class="col-lg-12">
         <br>
         
-        {% if 'accounts' not in request.path %}
+        {% if 'accounts' not in request.path and 'details' not in request.path %}
           <form method="get" action="{% url 'busca' %}">
             <div class="form-group row">
               <div class="col-12">

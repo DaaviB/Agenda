@@ -21,6 +21,7 @@ def index(request):
 
 
 def details(request, contato_id):
+    print(request.path)
     contato = get_object_or_404(Contato, id=contato_id)
     
     if not contato.mostrar:
@@ -50,7 +51,7 @@ def busca(request):
     page = request.GET.get('p')
     contatos = paginator.get_page(page)
     
-    return render(request, 'contatos/index.html', context={
+    return render(request, 'contatos/busca.html', context={
         'contatos':contatos,
     })
 
