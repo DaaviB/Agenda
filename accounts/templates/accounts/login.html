@@ -1,20 +1,31 @@
 {% extends "base.html" %}
 
-{% block conteudo %}
-    <h1 class="mt-3 mb-3">Login</h1>
+{% block titulo %}Login | {% endblock titulo %}
 
-    <form method="POST" action="{% url 'login' %}">
-        {% include "parciais/_messages.html" %}
-        {% csrf_token %}
-        <div class="form-group">
-            <label>Usuário</label>
-            <input type="text" name="usuario" value="{{ request.POST.usuario }}" class="form-control" placeholder="Usuário">
-        </div>
-        <div class="form-group">
-            <label>Senha</label>
-            <input type="password" name="senha" class="form-control" placeholder="Senha">
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Entrar</button>
-    </form>
+{% block conteudo %}
+
+    {% if notuser.is_authenticated %}
+        <h1 class="mt-3 mb-3">Login</h1>
+
+        <form method="POST" action="{% url 'login' %}">
+            {% include "parciais/_messages.html" %}
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Usuário</label>
+                <input type="text" name="usuario" value="{{ request.POST.usuario }}" class="form-control" placeholder="Usuário">
+            </div>
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" name="senha" class="form-control" placeholder="Senha">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Entrar</button>
+        </form>
+    {% else %}
+        <p>Você está logado com: {{ user }}</p>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary mb-3">Logout</button>
+        </form>
+    {% endif %}
 
 {% endblock conteudo %}

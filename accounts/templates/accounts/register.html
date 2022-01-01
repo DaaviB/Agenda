@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
+{% block titulo %}Cadastro | {% endblock titulo %}
+
 {% block conteudo %}
+
     <h1 class="mt-3 mb-3">Cadastro</h1>
 
     <form method="POST" action="{% url 'register' %}">
@@ -32,4 +35,5 @@
         </div>
         <button type="submit" class="btn btn-primary mb-3">Registrar</button>
     </form>
+
 {% endblock conteudo %}
