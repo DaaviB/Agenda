@@ -1,16 +1,32 @@
 {% extends "base.html" %}
 
-{% block titulo %}Dashboard de {{ user }} | {% endblock titulo %}
+{% block titulo %} Dashboard de {{ user }} | {% endblock titulo %}
 
 {% block conteudo %}
 
     {% include "parciais/_messages.html" %}
-    <h1 class="mt-3 mb-3">{{ user.first_name }} {{ user.last_name }}</h1>
-    <p>Seu nome de Usuário: {{ user }}</p>
-
-    <form method="POST" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary mb-3">Logout</button>
-    </form>
+    <div class="container d-flex flex-lg-column align-content-center">
+        <h1 class="mt-3 mb-3">
+            {% if not user.first_name and not user.last_name %}
+                Olá {{ user }}
+            {% else %}
+                Olá {{ user.first_name }} {{ user.last_name }}
+            {% endif %}
+        </h1>
+        <p>Seu nome de usuário: {{ user }}</p>
+    </div>
+    <div class="container">
+        <form method="POST" action="{% url 'dashboard' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table">
+                {{ form }}
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 
 {% endblock conteudo %}
